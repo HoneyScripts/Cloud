@@ -1,0 +1,49 @@
+ create shell script file "ex:vi test.sh"
+ paste below commands
+
+
+#!/bin/bash
+
+sudo apt update -y
+
+sudo apt install apache2 -y
+
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs -y
+
+sudo apt update -y
+
+sudo npm install -g corepack -y
+
+corepack enable
+
+corepack prepare yarn@stable --activate 
+
+sudo npm install -g pm2
+
+-- step-2-----------Modifying config.js
+then clone your git repo 
+   git clone https://github.com/CloudTechDevOps/2nd10WeeksofCloudOps-main.git
+   checkout client cd client 
+
+11. edit the config.js
+
+vi client/src/pages/config.js
+  
+const API_BASE_URL = "http://api.narni.co.in";
+ 
+in above line change to your backend publicip
+const API_BASE_URL = "http://publicip";
+ex;const API_BASE_URL = "http://32.68.98.10";
+
+
+------------------------------------------- step-3 ----------- Run 
+12. then go to client directory 
+13.run below commands
+
+npm install 
+npm run build
+sudo cp -r build/* /var/www/html
+
+your frontend part is completed 
+
